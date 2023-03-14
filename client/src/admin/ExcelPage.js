@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Popconfirm,Upload, Icon } from "antd";
 import {  Button, Row, Col  } from "reactstrap";
-// import { ExcelRenderer } from "react-excel-renderer";
+import { ExcelRenderer } from "react-excel-renderer";
 import { EditableFormRow, EditableCell } from "./editable";
 
 export default class ExcelPage extends Component {
@@ -118,38 +118,38 @@ export default class ExcelPage extends Component {
       return false;
     }
     //just pass the fileObj as parameter
-    // ExcelRenderer(fileObj, (err, resp) => {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     let newRows = [];
-    //     resp.rows.slice(1).map((row, index) => {
-    //         console.log("row",row);
-    //       if (row && row !== "undefined") {
-    //         newRows.push({
-    //           name: row[1],
-    //           manufacturer: row[2],
-    //           expiry: row[3],
-    //           quantity: row[4],
-    //           mrp: row[5],
-    //           offer: row[6]
-    //         });
-    //       }
-    //     });
-    //     if (newRows.length === 0) {
-    //       this.setState({
-    //         errorMessage: "No data found in file!"
-    //       });
-    //       return false;
-    //     } else {
-    //       this.setState({
-    //         cols: resp.cols,
-    //         rows: newRows,
-    //         errorMessage: null
-    //       });
-    //     }
-    //   }
-    // });
+    ExcelRenderer(fileObj, (err, resp) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let newRows = [];
+        resp.rows.slice(1).map((row, index) => {
+            console.log("row",row);
+          if (row && row !== "undefined") {
+            newRows.push({
+              name: row[1],
+              manufacturer: row[2],
+              expiry: row[3],
+              quantity: row[4],
+              mrp: row[5],
+              offer: row[6]
+            });
+          }
+        });
+        if (newRows.length === 0) {
+          this.setState({
+            errorMessage: "No data found in file!"
+          });
+          return false;
+        } else {
+          this.setState({
+            cols: resp.cols,
+            rows: newRows,
+            errorMessage: null
+          });
+        }
+      }
+    });
     return false;
   };
 
