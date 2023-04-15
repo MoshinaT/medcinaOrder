@@ -97,7 +97,7 @@ const Orders = () => {
     >
       <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
        {showOrdersLength()}
-       <Table striped>
+       <Table striped responsive>
       <thead>
         <tr>
           <th>

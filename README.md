@@ -1,4 +1,4 @@
-# Shopify
+# Medcina
 
 Instead of going to the local malls for a shopping spree, more and more people are using the variety of online resources to discover the right products for them. From giants like Amazon to small Etsy stores, online shopping is the future of consumerism!
 This project is a web based shopping system.This project is an attempt to provide the advantages of online shopping to customers of a real shop. It helps buying the products in the shop anywhere. Thus the customer will get the service of online shopping and home delivery from his favorite shop. This system can be implemented to any shop in the locality or to multinational branded shops having retail outlet chains. If shops are providing an online portal where their customers can enjoy

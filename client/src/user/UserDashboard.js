@@ -74,16 +74,21 @@ const Dashboard = () => {
               return (
                 <div>
                   <hr />
-                  <h4>{h.status}</h4>
+                  <h5>Order ID: {h._id}</h5>
+                  <h5>Order Status: {h.status}</h5>
+                  <h5>Order Amount: {h.amount}</h5>
+                  <h5>Ordered on: {h.createdAt}</h5>
+                  <h5>Order Address: {h.address}</h5>
+                  <h5>Products and count:</h5>
+                  <ul>
                   {h.products.map((p, i) => {
                     return (
-                      <div key={i}>
-                        <h6>Product name: {p.name}</h6>
-                        <h6>Product price: ₹{p.mrp}</h6>
-                        <h6>Purchased date: {moment(p.createdAt).fromNow()}</h6>
-                      </div>
+                      <li key={i}>
+                        <h6>Product name: {p.name} - {p.count}</h6>
+                      </li>
                     );
                   })}
+                  </ul>
                 </div>
               );
             })}

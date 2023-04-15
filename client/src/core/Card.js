@@ -191,8 +191,9 @@ const Card = ({
               <Typography gutterBottom variant='h5' component='h2'>
                 {product.name}
               </Typography>
-              <Typography>Manufacturer:{product.manufacturer}</Typography>
-              <p>Price: ₹{product.mrp}</p>
+              <Typography>Manufacturer: {product.manufacturer}</Typography>
+              <Typography>MRP: ₹{product.mrp}</Typography>
+              <Typography>Our Price: ₹{product.mrp}</Typography>
               {product.offer?<p>Offer: {product.offer}%</p>:null}{' '}
               <p>
                 Added on {moment(product.createdAt).fromNow()}{' '}
@@ -200,7 +201,7 @@ const Card = ({
               {showStock(product.quantity)}
               <br></br>
               <span>
-                {showViewButton(showViewProductButton)}
+                {/* {showViewButton(showViewProductButton)} */}
                 {showAddToCartBtn(showAddToCartButton)}
                 {showRemoveButton(showRemoveProductButton)}
               </span>

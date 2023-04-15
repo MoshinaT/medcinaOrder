@@ -64,6 +64,7 @@ const Shop = () => {
       height: 48,
       padding: '0 20px',
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      margin:'20px 20px'
     },
   }));
 
@@ -115,13 +116,13 @@ const Shop = () => {
 
   return (
     <Layout
-      title='Shop page'
-      description='Search and find fashion for you'
+      title='Home page'
+      description='Search and find medicines here'
       className='container-fluid'
     >
       <Search />
       <div className='row'>
-        <div className='col-md-3'>
+        {/* <div className='col-md-3'>
 
           <h4>Filter by price range</h4>
           <div>
@@ -130,9 +131,9 @@ const Shop = () => {
               handleFilters={(filters) => handleFilters(filters, 'price')}
             />
           </div>
-        </div>
-
-        <div className='col-md-9'>
+        </div> */}
+<div className='col-md-1'></div>
+        <div className='col-md-10'>
           <h2 className='mb-2'>Products</h2>
           <div className='row'>
             {filteredResults.map((product, i) => (
@@ -144,6 +145,7 @@ const Shop = () => {
           <hr />
           {loadMoreButton()}
         </div>
+        <div className='col-md-1'></div>
       </div>
     </Layout>
   );

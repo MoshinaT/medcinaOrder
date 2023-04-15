@@ -38,7 +38,7 @@ const Home = () => {
   return (
     <Layout
       title='Home page'
-      description='Welcome to the world of fashion.'
+      description='Order your medicine at ease.'
       className='container-fluid'
     >
       <Search />

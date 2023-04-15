@@ -158,14 +158,14 @@ const MaterialAppBar = ({ history }) => {
           </Link>
         </MenuItem>
 
-        <MenuItem>
+        {/* <MenuItem>
           <Link style={isActive(history, '/shop')} to='/shop'>
             <IconButton aria-label='Shop' color='inherit'>
               <StorefrontIcon />
             </IconButton>
             Shop
           </Link>
-        </MenuItem>
+        </MenuItem> */}
 
         <MenuItem>
           <Link style={isActive(history, '/cart')} to='/cart'>
@@ -264,8 +264,8 @@ const MaterialAppBar = ({ history }) => {
             </IconButton>
           </a>
           <a href='/' style={{ color: '#ffffff', textDecoration: 'none' }}>
-            <Typography className={classes.title} variant='h6' noWrap>
-              Shopify
+            <Typography className={classes.title} variant='h4' noWrap>
+              MedCina Agencies
             </Typography>
           </a>
 
@@ -277,13 +277,13 @@ const MaterialAppBar = ({ history }) => {
                 <Typography noWrap>Home</Typography>
               </IconButton>
             </Link>
-
+{/* 
             <Link style={isActive(history, '/shop')} to='/shop'>
               <IconButton aria-label='Shop' color='inherit'>
                 <StorefrontIcon />
                 <Typography noWrap>Shop</Typography>
               </IconButton>
-            </Link>
+            </Link> */}
 
             <Link style={isActive(history, '/cart')} to='/cart'>
               <IconButton aria-label='Cart' color='inherit'>

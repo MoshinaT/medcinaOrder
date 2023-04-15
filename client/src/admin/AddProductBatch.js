@@ -45,7 +45,7 @@ const AddProductBatch = () => {
   };
 
   const clickSubmit = (val) => {
-    console.log("val",val);
+   // console.log("val",val);
    // event.preventDefault();
     setValues({ ...values, error: '', loading: true });
     formData.set("files", JSON.stringify(val));
