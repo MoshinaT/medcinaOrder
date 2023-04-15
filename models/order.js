@@ -22,7 +22,7 @@ const OrderSchema = new mongoose.Schema(
     address: String,
     status: {
       type: String,
-      default: 'Not processed',
+      default: 'Received',
       enum: [
         'Received',
         'Processing',
