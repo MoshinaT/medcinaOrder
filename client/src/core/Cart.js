@@ -51,8 +51,6 @@ const Cart = () => {
           {items.length > 0 ? showItems(items) : noItemsMessage()}
         </div>
         <div className='col-md-4'>
-          <h2 className='mb-4'>Your cart summary</h2>
-          <hr />
           <Checkout products={items} setRun={setRun} run={run} />
         </div>
         <div className='col-md-2'></div>

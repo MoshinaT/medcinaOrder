@@ -185,7 +185,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
             }}
             onInstance={(instance) => (data.instance = instance)}
           />
-          <button onClick={buy} className='btn btn-success btn-block'>
+          <button onClick={buy} className='btn btn-success btn-block' style={{marginBottom:"1rem"}}>
             Order
           </button>
         </div>
@@ -205,9 +205,9 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   const showSuccess = (success) => (
     <div
       className='alert alert-info'
-      style={{ display: success ? '' : 'none' }}
+      style={{ display: success ? '' : 'none', fontSize: '30px' }}
     >
-      Thanks! Your order was placed successfully!
+      Thanks! Your order has been placed successfully!
     </div>
   );
 
