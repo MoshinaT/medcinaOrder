@@ -6,7 +6,6 @@ const { errorHandler } = require('../helpers/dbErrorHandler');
 require('dotenv').config();
 
 exports.signup = (req, res) => {
-  // console.log('req.body', req.body);
   const user = new User(req.body);
   user.save((err, user) => {
     if (err) {
@@ -23,19 +22,20 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  // find the user based on email
-  const { email, password } = req.body;
-  User.findOne({ email }, (err, user) => {
+  // find the user based on name
+  const { name, password } = req.body;
+  console.log("reached here",req.body);
+  User.findOne({ name }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "User with that email doesn't exist. Please signup.",
+        error: "User with that name doesn't exist. Please signup.",
       });
     }
     // if user found make sure the email and password match
     // create authenticate method in user model
     if (!user.authenticate(password)) {
       return res.status(401).json({
-        error: "Email and password didn't match",
+        error: "User name and password didn't match",
       });
     }
     // generate a signed token with user id and secret

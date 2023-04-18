@@ -33,13 +33,12 @@ exports.create = (req, res) => {
       });
     }
     // check for all fields
-    const { name, manufacturer, expiry, quantity, mrp, offer } = fields;
+    const { name, manufacturer, quantity, mrp, offer } = fields;
 
     console.log(fields);
     if (
       !name ||
       !manufacturer ||
-      !expiry ||
       !quantity ||
       !mrp ||
       !offer
@@ -68,12 +67,14 @@ exports.create = (req, res) => {
 
 
 
-exports.createBatch = (req, res) => {
+exports.createBatch = async(req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
+  await Product.deleteMany();
+
   form.parse(req, (err, fields) => {
   // const { files } = fields;
-  //console.log(typeof(files));
+  console.log(typeof(files));
 
   var rows = JSON.parse(fields.files);
   rows.forEach((prod)=>{
@@ -153,6 +154,18 @@ exports.remove = (req, res) => {
     res.json({
       message: 'Product deleted successfully',
     });
+  });
+};
+
+exports.removeAll = async(req, res) => {
+  let respo = await Product.deleteMany();
+  if (respo.err) {
+    return res.status(400).json({
+      error: errorHandler(err),
+    });
+  }
+  res.json({
+    message: 'All products deleted successfully',
   });
 };
 

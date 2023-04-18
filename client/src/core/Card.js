@@ -153,7 +153,7 @@ const Card = ({
   };
 
   const classes = useStyles();
-
+console.log("pr",product);
   return (
     // <div className='card'>
     //   <div className='card-header name'>{product.name}</div>
@@ -193,8 +193,8 @@ const Card = ({
               </Typography>
               <Typography>Manufacturer: {product.manufacturer}</Typography>
               <Typography>MRP: ₹{product.mrp}</Typography>
-              <Typography>Our Price: ₹{product.mrp}</Typography>
-              {product.offer?<p>Offer: {product.offer}%</p>:null}{' '}
+              {product.offer?<Typography>Our Price: ₹{product.offer}</Typography>:null}
+              {/* {product.offer?<p>Offer: {product.offer}%</p>:null}{' '} */}
               <p>
                 Added on {moment(product.createdAt).fromNow()}{' '}
               </p>

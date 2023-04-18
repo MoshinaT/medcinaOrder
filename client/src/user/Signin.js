@@ -38,14 +38,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Signin() {
   const [values, setValues] = useState({
-    email: '',
+    name: '',
     password: '',
     error: '',
     loading: false,
     redirectToReferrer: false,
   });
 
-  const { email, password, loading, error, redirectToReferrer } = values;
+  const { name, password, loading, error, redirectToReferrer } = values;
   const { user } = isAuthenticated();
 
   const handleChange = (name) => (event) => {
@@ -55,7 +55,7 @@ export default function Signin() {
   const clickSubmit = (event) => {
     event.preventDefault(); // so that browser does not reload
     setValues({ ...values, error: false, loading: true });
-    signin({ email, password }).then((data) => {
+    signin({ name, password }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
@@ -119,13 +119,13 @@ export default function Signin() {
             margin='normal'
             required
             fullWidth
-            id='email'
-            label='Email Address'
-            name='email'
-            autoComplete='email'
-            onChange={handleChange('email')}
-            type='email'
-            value={email}
+            id='name'
+            label='User name'
+            name='name'
+            autoComplete='name'
+            onChange={handleChange('name')}
+            type='string'
+            value={name}
             autoFocus
           />
           <TextField

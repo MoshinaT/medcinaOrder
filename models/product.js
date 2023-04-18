@@ -6,18 +6,11 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: true,
-      maxlength: 32,
+      required: false,
     },
     manufacturer: {
       type: String,
-      required: true,
-      maxlength: 2000,
-    },
-    expiry: {
-      type: String,
-      required: true,
-      maxlength: 32,
+      required: false,
     },
     quantity: {
       type: Number,
@@ -25,8 +18,7 @@ const productSchema = new mongoose.Schema(
     mrp: {
       type: Number,
       trim: true,
-      required: true,
-      maxlength: 32,
+      required: false,
     },
     sold: {
       type: Number,
@@ -36,7 +28,6 @@ const productSchema = new mongoose.Schema(
       type: Number,
       trim: true,
       required: false,
-      maxlength: 32,
     },
   },
   { timestamps: true }

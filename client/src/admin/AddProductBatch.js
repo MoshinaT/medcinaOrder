@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
-import { createProductBatch } from './apiAdmin';
+import { createProductBatch, deleteAllProduct} from './apiAdmin';
 import ExcelPage from './ExcelPage';
+import {  Button, Row, Col  } from "reactstrap";
 
 const AddProductBatch = () => {
   const [values, setValues] = useState({
@@ -57,7 +58,7 @@ const AddProductBatch = () => {
         setValues({
           ...values,
           loading: false,
-          createdProductBatch: 'Data sheet',
+          createdProduct: 'All product',
         });
       }
     });
@@ -74,11 +75,11 @@ const AddProductBatch = () => {
 
   const showSuccess = () => (
     <div
-      className='alert alert-info'
-      style={{ display: createdProduct ? '' : 'none' }}
-    >
-      <h2>{`${createdProduct}`} is created!</h2>
-    </div>
+    className='alert alert-info'
+    style={{ display: createdProduct ? '' : 'none' }}
+  >
+    <h2>Success</h2>
+  </div>
   );
 
   const showLoading = () =>
@@ -88,6 +89,20 @@ const AddProductBatch = () => {
       </div>
     );
 
+    
+  const handleDeleteAll = () => {
+    deleteAllProduct(user._id, token ).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({
+          ...values,
+          loading: false,
+          createdProduct: 'Data sheet',
+        });
+      }
+    });
+  };
     
   return (
 
@@ -100,6 +115,19 @@ const AddProductBatch = () => {
           {showLoading()}
           {showSuccess()}
           {showError()}
+          {/* <Row>
+          <Col>
+          <Button
+                  onClick={handleDeleteAll}
+                  size="large"
+                  color="danger"
+                  style={{ marginBottom: 16 }}
+                >
+                  Delete existing products
+                </Button>
+                </Col>
+        
+        </Row> */}
     <ExcelPage clickSubmit={clickSubmit}/>
         </div>
       </div>

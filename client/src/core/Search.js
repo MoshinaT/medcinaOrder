@@ -88,6 +88,7 @@ const Search = () => {
               </div>
             ))}
           </div>
+          {searched && results.length > 0?<hr />:null}
         </div>
         <div className='col-md-1'></div>
       </div>

@@ -8,7 +8,6 @@ const AddProduct = () => {
   const [values, setValues] = useState({
     name: '',
     manufacturer: '',
-    expiry: '',
     quantity: '',
     mrp: '',
     offer: '',
@@ -24,7 +23,6 @@ const AddProduct = () => {
   const {
     name,
     manufacturer,
-    expiry,
     quantity,
     mrp,
     offer,
@@ -65,7 +63,6 @@ const AddProduct = () => {
           ...values,
           name: '',
           manufacturer: '',
-          expiry: '',
           quantity: '',
           mrp: '',
           offer:'',
@@ -78,7 +75,7 @@ const AddProduct = () => {
 
   const newPostForm = () => (
     <form className='mb-3' onSubmit={clickSubmit}>
-      <h4>Post Photo</h4>
+      {/* <h4>Post Photo</h4>
       <div className='form-group'>
         <label className='btn btn-secondary'>
           <input
@@ -88,7 +85,7 @@ const AddProduct = () => {
             accept='image/*'
           />
         </label>
-      </div>
+      </div> */}
 
       <div className='form-group'>
         <label className='text-muted'>Name</label>
@@ -106,16 +103,6 @@ const AddProduct = () => {
           onChange={handleChange('manufacturer')}
           className='form-control'
           value={manufacturer}
-        />
-      </div>
-
-      <div className='form-group'>
-        <label className='text-muted'>Expiry</label>
-        <input
-          onChange={handleChange('expiry')}
-          type='number'
-          className='form-control'
-          value={expiry}
         />
       </div>
 

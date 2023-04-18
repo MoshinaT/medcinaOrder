@@ -23,11 +23,6 @@ export default class ExcelPage extends Component {
           editable: true
         },
         {
-          title: "EXPIRY",
-          dataIndex: "expiry",
-          editable: true
-        },
-        {
             title: "QUANTITY",
             dataIndex: "quantity",
             editable: true
@@ -127,12 +122,11 @@ export default class ExcelPage extends Component {
             console.log("row",row);
           if (row && row !== "undefined") {
             newRows.push({
-              name: row[1],
-              manufacturer: row[2],
-              expiry: row[3],
-              quantity: row[4],
-              mrp: row[5],
-              offer: row[6]
+              name: row[0],
+              manufacturer: row[1],
+              quantity: row[2],
+              mrp: row[4],
+              offer: row[5]
             });
           }
         });
@@ -171,7 +165,6 @@ export default class ExcelPage extends Component {
       key: count,
       name: "Dolo",
       manufacturer: "DYNA",
-      expiry: "05-27",
       quantity: "5",
       mrp: "895",
       offer: "10"
@@ -181,6 +174,8 @@ export default class ExcelPage extends Component {
       count: count + 1
     });
   };
+
+
 
   render() {
     const components = {
@@ -207,6 +202,7 @@ export default class ExcelPage extends Component {
     return (
       <>
         <h1>Importing Excel Component</h1>
+        
         <Row>
           <Col
             span={8}

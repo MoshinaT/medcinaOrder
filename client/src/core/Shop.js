@@ -9,6 +9,7 @@ import { getFilteredProducts } from './apiCore';
 import Checkbox from './Checkbox';
 import RadioBox from './RadioBox';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 
 import Search from './Search';
 import { prices } from './fixedPrices';
@@ -113,7 +114,6 @@ const Shop = () => {
     }
     return array;
   };
-
   return (
     <Layout
       title='Home page'
