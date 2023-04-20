@@ -193,7 +193,7 @@ console.log("pr",product);
               </Typography>
               <Typography>Manufacturer: {product.manufacturer}</Typography>
               <Typography>MRP: ₹{product.mrp}</Typography>
-              {product.offer?<Typography>Our Price: ₹{product.offer}</Typography>:null}
+              {/* {product.offer?<Typography>Our Price: ₹{product.offer}</Typography>:null} */}
               {/* {product.offer?<p>Offer: {product.offer}%</p>:null}{' '} */}
               <p>
                 Added on {moment(product.createdAt).fromNow()}{' '}

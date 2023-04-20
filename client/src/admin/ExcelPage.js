@@ -32,11 +32,6 @@ export default class ExcelPage extends Component {
             dataIndex: "mrp",
             editable: true
           },
-          {
-            title: "OFFER",
-            dataIndex: "offer",
-            editable: true
-          },
         {
           title: "Action",
           dataIndex: "action",
@@ -125,8 +120,7 @@ export default class ExcelPage extends Component {
               name: row[0],
               manufacturer: row[1],
               quantity: row[2],
-              mrp: row[4],
-              offer: row[5]
+              mrp: row[3]
             });
           }
         });
@@ -167,7 +161,6 @@ export default class ExcelPage extends Component {
       manufacturer: "DYNA",
       quantity: "5",
       mrp: "895",
-      offer: "10"
     };
     this.setState({
       rows: [newData, ...rows],

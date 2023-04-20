@@ -10,7 +10,6 @@ const AddProduct = () => {
     manufacturer: '',
     quantity: '',
     mrp: '',
-    offer: '',
     loading: false,
     error: '',
     createdProduct: '',
@@ -25,7 +24,6 @@ const AddProduct = () => {
     manufacturer,
     quantity,
     mrp,
-    offer,
     loading,
     error,
     createdProduct,
@@ -65,7 +63,6 @@ const AddProduct = () => {
           manufacturer: '',
           quantity: '',
           mrp: '',
-          offer:'',
           loading: false,
           createdProduct: data.name,
         });
@@ -127,15 +124,7 @@ const AddProduct = () => {
         />
       </div>
 
-      <div className='form-group'>
-        <label className='text-muted'>Offer</label>
-        <input
-          onChange={handleChange('offer')}
-          type='number'
-          className='form-control'
-          value={offer}
-        />
-      </div>
+     
 
       <button className='btn btn-outline-primary'>Create Product</button>
     </form>

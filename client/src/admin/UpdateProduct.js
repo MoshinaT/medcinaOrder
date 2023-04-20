@@ -10,7 +10,6 @@ const UpdateProduct = ({ match }) => {
     manufacturer: '',
     quantity: '',
     mrp: '',
-    offer: '',
     loading: false,
     error: '',
     createdProduct: '',
@@ -24,7 +23,6 @@ const UpdateProduct = ({ match }) => {
     manufacturer,
     quantity,
     mrp,
-    offer,
     loading,
     error,
     createdProduct,
@@ -44,7 +42,6 @@ const UpdateProduct = ({ match }) => {
           manufacturer: data.manufacturer,
           quantity: data.quantity,
           mrp: data.mrp,
-          offer: data.offer,
           formData: new FormData(),
         });
       }
@@ -78,7 +75,6 @@ const UpdateProduct = ({ match }) => {
             manufacturer: '',
             quantity: '',
             mrp: '',
-            offer: '',
             loading: false,
             error: false,
             redirectToProfile: true,
@@ -145,15 +141,7 @@ const UpdateProduct = ({ match }) => {
         />
       </div>
 
-      <div className='form-group'>
-        <label className='text-muted'>Offer</label>
-        <input
-          onChange={handleChange('offer')}
-          type='number'
-          className='form-control'
-          value={offer}
-        />
-      </div>
+      
 
       <button className='btn btn-outline-primary'>Update Product</button>
     </form>
