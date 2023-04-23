@@ -33,15 +33,14 @@ exports.create = (req, res) => {
       });
     }
     // check for all fields
-    const { name, manufacturer, quantity, mrp, offer } = fields;
+    const { name, manufacturer, quantity, mrp } = fields;
 
     console.log(fields);
     if (
       !name ||
       !manufacturer ||
       !quantity ||
-      !mrp ||
-      !offer
+      !mrp 
     ) {
       return res.status(400).json({
         error: 'All fields are required',

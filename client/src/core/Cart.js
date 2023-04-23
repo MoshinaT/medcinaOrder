@@ -17,6 +17,8 @@ const Cart = () => {
     return (
       <div>
         <h2>Your cart has {`${items.length}`} items</h2>
+        <h4><Link to='/'>Continue shopping</Link></h4>
+
         <hr />
         {items.map((product, i) => (
           <Card

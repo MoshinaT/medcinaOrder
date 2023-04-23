@@ -23,12 +23,7 @@ const productSchema = new mongoose.Schema(
     sold: {
       type: Number,
       default: 0,
-    },
-    offer: {
-      type: Number,
-      trim: true,
-      required: false,
-    },
+    }
   },
   { timestamps: true }
 );
