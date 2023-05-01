@@ -26,17 +26,19 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(4, 0, 2),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    zIndex: 0
   },
   card: {
     height: '100%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -183,7 +185,7 @@ console.log("pr",product);
 
     <Container className={classes.cardGrid} maxWidth='md'>
       <CssBaseline />
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={12} md={12}>
           <CardM className={classes.card}>
             {shouldRedirect(redirect)}

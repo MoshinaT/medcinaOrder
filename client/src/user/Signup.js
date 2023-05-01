@@ -41,13 +41,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup() {
   const [values, setValues] = useState({
     name: '',
-    email: '',
     password: '',
     error: '',
     success: false,
   });
 
-  const { name, email, password, success, error } = values;
+  const { name, password, success, error } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -56,15 +55,14 @@ export default function Signup() {
   const clickSubmit = (event) => {
     event.preventDefault(); // so that browser does not reload
     setValues({ ...values, error: false });
-    console.log("data",name, email, password);
-    signup({ name, email, password }).then((data) => {
+    console.log("data",name, password);
+    signup({ name, password }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
         setValues({
           ...values,
           name: '',
-          email: '',
           password: '',
           error: '',
           success: true,
@@ -120,20 +118,6 @@ export default function Signup() {
                 id='name'
                 label='Full Name'
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant='outlined'
-                required
-                fullWidth
-                id='email'
-                label='Email Address'
-                name='email'
-                onChange={handleChange('email')}
-                type='email'
-                value={email}
-                autoComplete='off'
               />
             </Grid>
             <Grid item xs={12}>

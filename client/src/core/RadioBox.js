@@ -12,13 +12,13 @@ const RadioBox = ({ prices, handleFilters }) => {
   return prices.map((p, i) => (
     <div className='ml-5' key={i}>
       <Radio
-        checked={value === `${p._id}`}
+        checked={value === `${p}`}
         onChange={handleChange}
-        value={`${p._id}`}
+        value={`${p}`}
         name={p}
         inputProps={{ 'aria-label': 'A' }}
       />
-      <label className='form-check-label'>{p.name}</label>
+      <label className='form-check-label'>{p}</label>
     </div>
   ));
 };

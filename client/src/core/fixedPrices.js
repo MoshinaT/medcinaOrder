@@ -30,3 +30,12 @@ export const prices = [
     array: [3000, 10000],
   },
 ];
+
+
+export const manufacturers = [
+  ' A BBOTT',
+ ' AJANTA',
+ ' ALCON',
+ ' ALEMBI',
+ ' ALEMBIC']
+  

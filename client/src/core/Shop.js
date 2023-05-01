@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 
 import Search from './Search';
-import { prices } from './fixedPrices';
+import { prices,manufacturers } from './fixedPrices';
 
 const Shop = () => {
   const [myFilters, setMyFilters] = useState({
@@ -20,7 +20,7 @@ const Shop = () => {
   });
 
   const [error, setError] = useState(false);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(18);
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState([]);
@@ -67,6 +67,9 @@ const Shop = () => {
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
       margin:'20px 20px'
     },
+    card:{
+      padding: '2px 5px',
+    }
   }));
 
   const classes = useStyles();
@@ -95,25 +98,26 @@ const Shop = () => {
     const newFilters = { ...myFilters };
     newFilters.filters[filterBy] = filters;
 
-    if (filterBy === 'price') {
-      let priceValues = handlePrice(filters);
-      newFilters.filters[filterBy] = priceValues;
+    if (filterBy === 'manufacturer') {
+      // let priceValues = handlePrice(filters);
+      newFilters.filters[filterBy] = filters;
     }
     loadFilteredResults(myFilters.filters);
     setMyFilters(newFilters);
   };
 
-  const handlePrice = (value) => {
-    const data = prices;
-    let array = [];
+  // const handlePrice = (value) => {
+  //   const data = prices;
+  //   let array = [];
 
-    for (let key in data) {
-      if (data[key]._id === parseInt(value)) {
-        array = data[key].array;
-      }
-    }
-    return array;
-  };
+  //   for (let key in data) {
+  //     if (data[key]._id === parseInt(value)) {
+  //       array = data[key].array;
+  //     }
+  //   }
+  //   return array;
+  // };
+
   return (
     <Layout
       title='Home page'
@@ -121,23 +125,27 @@ const Shop = () => {
       className='container-fluid'
     >
       <Search />
+      <div className='row'></div>
       <div className='row'>
-        {/* <div className='col-md-3'>
+   <div className='col-md-2'>
 
-          <h4>Filter by price range</h4>
+          <h4>Filter by Manufacturer</h4>
           <div>
-            <RadioBox
+            {/* <RadioBox
               prices={prices}
               handleFilters={(filters) => handleFilters(filters, 'price')}
+            /> */}
+            <RadioBox
+              prices={manufacturers}
+              handleFilters={(filters) => handleFilters(filters, 'manufacturer')}
             />
           </div>
-        </div> */}
-<div className='col-md-1'></div>
+        </div> 
         <div className='col-md-10'>
           <h2 className='mb-2'>Products</h2>
           <div className='row'>
             {filteredResults.map((product, i) => (
-              <div key={i} className='col-xl-3 col-lg-6 col-md-6 col-sm-6'>
+              <div key={i} className='col-xl-2 col-lg-6 col-md-6 col-sm-6' style={{padding:"2px 5px"}}>
                 <Card product={product} />
               </div>
             ))}
@@ -145,7 +153,6 @@ const Shop = () => {
           <hr />
           {loadMoreButton()}
         </div>
-        <div className='col-md-1'></div>
       </div>
     </Layout>
   );

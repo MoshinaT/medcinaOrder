@@ -7,14 +7,13 @@ import { read, update, updateUser } from './apiUser';
 const Profile = ({ match }) => {
   const [values, setValues] = useState({
     name: '',
-    email: '',
     password: '',
     error: false,
     success: false,
   });
 
   const { token } = isAuthenticated();
-  const { name, email, password, error, success } = values;
+  const { name, password, error, success } = values;
 
   const init = (userId) => {
     // console.log(userId);
@@ -22,7 +21,7 @@ const Profile = ({ match }) => {
       if (data.error) {
         setValues({ ...values, error: true });
       } else {
-        setValues({ ...values, name: data.name, email: data.email });
+        setValues({ ...values, name: data.name });
       }
     });
   };
@@ -37,7 +36,7 @@ const Profile = ({ match }) => {
 
   const clickSubmit = (e) => {
     e.preventDefault();
-    update(match.params.userId, token, { name, email, password }).then(
+    update(match.params.userId, token, { name, password }).then(
       (data) => {
         if (data.error) {
           // console.log(data.error);
@@ -47,7 +46,6 @@ const Profile = ({ match }) => {
             setValues({
               ...values,
               name: data.name,
-              email: data.email,
               success: true,
             });
           });
@@ -62,7 +60,7 @@ const Profile = ({ match }) => {
     }
   };
 
-  const profileUpdate = (name, email, password) => (
+  const profileUpdate = (name, password) => (
     <form>
       <div className='form-group'>
         <label className='text-muted'>Name</label>
@@ -71,15 +69,6 @@ const Profile = ({ match }) => {
           onChange={handleChange('name')}
           className='form-control'
           value={name}
-        />
-      </div>
-      <div className='form-group'>
-        <label className='text-muted'>Email</label>
-        <input
-          type='email'
-          onChange={handleChange('email')}
-          className='form-control'
-          value={email}
         />
       </div>
       <div className='form-group'>
@@ -105,7 +94,7 @@ const Profile = ({ match }) => {
       className='container-fluid'
     >
       <h2 className='mb-4'>Profile update</h2>
-      {profileUpdate(name, email, password)}
+      {profileUpdate(name, password)}
       {redirectUser(success)}
     </Layout>
   );

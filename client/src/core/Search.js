@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
+import SearchInput from './SearchInput';
 
 import { list } from './apiCore';
 import Card from './Card';
@@ -35,6 +36,55 @@ const Search = () => {
     results: [],
     searched: false,
   });
+
+  const [options, setOptions] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getSuggestions = async (search) => {
+    setLoading(true);
+    if (search) {
+      list({ search: search || undefined }).then(
+        (response) => {
+          if (response.error) {
+            console.log(response.error);
+          } else {
+            console.log("response",response);
+            if(response.length>1)
+            {setOptions(response);}
+            else
+            {
+              setOptions([])
+            }
+            setLoading(false);
+            setData({ ...data, results: response, searched: true });
+          }
+        }
+      );
+    }else {
+          setOptions([]);
+          setLoading(false);
+          setData({
+            search: '',
+            results: [],
+            searched: false,
+          });
+      }
+      // if (word) {
+      //     setLoading(true);
+      //     // let response = await getApiSuggestions(word);
+      //     // console.log(response);
+      //     // setOptions(response);
+      //     // setLoading(false);
+      // } else {
+      //     setOptions([]);
+      // }
+  };
+
+  const getApiUrl = (name) => {
+    handleChange(name);
+    // let finalUrl = '/product/'+url;
+    // window.open(finalUrl, '_blank');
+};
 
   const { search, results, searched } = data;
 
@@ -99,29 +149,36 @@ const Search = () => {
 
   const searchForm = () => (
     <form onSubmit={searchSubmit} className={classes.root}>
-      <span className='input-group-text'>
+      <span >
         <div className='input-group input-group-lg'>
-          <div className='input-group-prepend'>
+          {/* <div className='input-group-prepend'>
             <FormControl className={classes.formControl}>
               <InputLabel id='demo-simple-select-helper-label'>
               </InputLabel>
             </FormControl>
-          </div>
-
-          <TextField
+          </div> */}
+          <SearchInput
+            className={classes.tField}
+                loading={loading}
+                options={options}
+                requests={getSuggestions}
+                onClickFunction={getApiUrl}
+                placeholder="Search the product here..."
+            />
+           {/* <TextField
             onChange={handleChange('search')}
             id='outlined-basic'
             label={<span><SearchIcon/>Search by name</span>}
             variant='outlined'
             className={classes.tField}
             autoComplete='off'
-          />
+          />  */}
 
-          <div className='ml-3 mt-2' style={{ border: 'none' }}>
+          {/* <div className='ml-3 mt-2' style={{ border: 'none' }}>
             <Button ml={2} variant='contained' color='primary' type='submit'>
               Search
             </Button>
-          </div>
+          </div> */}
         </div>
       </span>
     </form>

@@ -263,11 +263,16 @@ const MaterialAppBar = ({ history }) => {
               <StoreIcon />
             </IconButton>
           </a>
+          <span>
           <a href='/' style={{ color: '#ffffff', textDecoration: 'none' }}>
-            <Typography className={classes.title} variant='h4' noWrap>
-              MedCina Agencies
+            <Typography className={classes.title} variant='h4' noWrap style={{color:"#fc4faf",display:"inline",fontWeight:"600"}}>
+              MedCina
+            </Typography>
+            <Typography className={classes.title} variant='h4' noWrap style={{color:"#6f6ef5",display:"inline",fontWeight:"600"}}>
+              {' '}Agencies
             </Typography>
           </a>
+          </span>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

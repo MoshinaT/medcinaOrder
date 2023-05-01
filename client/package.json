@@ -12,6 +12,7 @@
     "braintree-web-drop-in-react": "^1.1.1",
     "config": "^3.3.1",
     "fontsource-roboto": "^3.0.3",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.27.0",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
@@ -19,7 +20,8 @@
     "react-excel-renderer": "^1.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "reactstrap": "^9.1.5"
+    "reactstrap": "^9.1.5",
+    "styled-components": "^5.3.10"
   },
   "scripts": {
     "start": "react-scripts start",
