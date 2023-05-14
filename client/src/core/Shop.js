@@ -100,7 +100,11 @@ const Shop = () => {
 
     if (filterBy === 'manufacturer') {
       // let priceValues = handlePrice(filters);
+      if(filters == " - ")
+      newFilters.filters[filterBy] = "";
+      else
       newFilters.filters[filterBy] = filters;
+
     }
     loadFilteredResults(myFilters.filters);
     setMyFilters(newFilters);
@@ -130,7 +134,7 @@ const Shop = () => {
    <div className='col-md-2'>
 
           <h4>Filter by Manufacturer</h4>
-          <div>
+          <div style={{height:"300px",overflow:"scroll"}}>
             {/* <RadioBox
               prices={prices}
               handleFilters={(filters) => handleFilters(filters, 'price')}
@@ -144,8 +148,9 @@ const Shop = () => {
         <div className='col-md-10'>
           <h2 className='mb-2'>Products</h2>
           <div className='row'>
+            {(filteredResults.length < 1) && <div className='col-xl-3 col-lg-6 col-md-6 col-sm-6'  style={{padding:"2px 5px"}}><h5>No products to display</h5></div>} 
             {filteredResults.map((product, i) => (
-              <div key={i} className='col-xl-2 col-lg-6 col-md-6 col-sm-6' style={{padding:"2px 5px"}}>
+              <div key={i} className='col-xl-3 col-lg-6 col-md-6 col-sm-6' style={{padding:"2px 5px"}}>
                 <Card product={product} />
               </div>
             ))}

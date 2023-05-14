@@ -20,6 +20,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     error: '',
     instance: {},
     address: '',
+    mobile:''
   });
 
 
@@ -46,6 +47,10 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     setData({ ...data, address: event.target.value });
   };
 
+  const handleMobile = (event) => {
+    setData({ ...data, mobile: event.target.value });
+  };
+
   const getTotal = () => {
     return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.mrp;
@@ -65,6 +70,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   };
 
   let deliveryAddress = data.address;
+  let deliveryMobile = data.mobile;
 
   // const buy = () => {
   //   setData({ loading: true });
@@ -141,6 +147,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       //amount: response.transaction.amount,
       amount:getTotal(products),
       address: deliveryAddress,
+      mobile: deliveryMobile
     };
 
     createOrder(userId, token, createOrderData)
@@ -167,6 +174,15 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       {data.clientToken !== null && products.length > 0 ? (
         <div>
           <div className='gorm-group mb-3'>
+            <label className='text-muted'>Mobile number:</label>
+            <textarea
+              onChange={handleMobile}
+              className='form-control'
+              value={data.mobile}
+              placeholder='Type your mobile number here...'
+            />
+          </div>
+          <div className='gorm-group mb-3'>
             <label className='text-muted'>Delivery address:</label>
             <textarea
               onChange={handleAddress}
@@ -175,6 +191,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
               placeholder='Type your delivery address here...'
             />
           </div>
+          
 
           <DropIn
             options={{

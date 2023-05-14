@@ -116,6 +116,9 @@ const Orders = () => {
             Adress
           </th>
           <th>
+            Mobile no.
+          </th>
+          <th>
             Status
           </th>
           <th>
@@ -144,6 +147,9 @@ const Orders = () => {
           </td>
           <td>
             {o.address}
+          </td>
+          <td>
+          {o.mobile}
           </td>
           <td>
           {showStatus(o)}

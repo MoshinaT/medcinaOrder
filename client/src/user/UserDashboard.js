@@ -78,6 +78,7 @@ const Dashboard = () => {
                   <h5>Order Amount: {h.amount}</h5>
                   <h5>Ordered on: {h.createdAt}</h5>
                   <h5>Order Address: {h.address}</h5>
+                  <h5>Order Mobile: {h.mobile}</h5>
                   <h5>Products and count:</h5>
                   <ul>
                   {h.products.map((p, i) => {

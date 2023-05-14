@@ -8,7 +8,7 @@ import {Card, CardTitle, CardText, ListGroup,CardHeader, CardBody,ListGroupItem,
 import {  Popconfirm,Upload, Icon } from "antd";
 
 const ViewOrders = props => {
-  const { _id, address, amount, createdAt, products, status, updatedAt, user } = props.location.state;
+  const { _id, address, mobile, amount, createdAt, products, status, updatedAt, user } = props.location.state;
 console.log(props);
   const [statusValues, setStatusValues] = useState([]);
   const { user:accountUser, token } = isAuthenticated();
