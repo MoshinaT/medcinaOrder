@@ -20,10 +20,11 @@ const Shop = () => {
   });
 
   const [error, setError] = useState(false);
-  const [limit, setLimit] = useState(18);
+  const [limit, setLimit] = useState(16);
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState([]);
+  const [run, setRun] = useState(false);
 
   const init = () => {
   
@@ -91,6 +92,11 @@ const Shop = () => {
   useEffect(() => {
     init();
     loadFilteredResults(skip, limit, myFilters.filters);
+  }, [run]);
+
+  useEffect(() => {
+    init();
+    loadFilteredResults(skip, limit, myFilters.filters);
   }, []);
 
   const handleFilters = (filters, filterBy) => {
@@ -100,7 +106,7 @@ const Shop = () => {
 
     if (filterBy === 'manufacturer') {
       // let priceValues = handlePrice(filters);
-      if(filters == " - ")
+      if(filters == " No Selection ")
       newFilters.filters[filterBy] = "";
       else
       newFilters.filters[filterBy] = filters;
@@ -151,7 +157,11 @@ const Shop = () => {
             {(filteredResults.length < 1) && <div className='col-xl-3 col-lg-6 col-md-6 col-sm-6'  style={{padding:"2px 5px"}}><h5>No products to display</h5></div>} 
             {filteredResults.map((product, i) => (
               <div key={i} className='col-xl-3 col-lg-6 col-md-6 col-sm-6' style={{padding:"2px 5px"}}>
-                <Card product={product} />
+                <Card 
+                product={product}  
+                setRun={setRun}
+                run={run} 
+            />
               </div>
             ))}
           </div>

@@ -133,7 +133,7 @@ const Search = () => {
           <h2 className='mt-4 mb-4 text-center'>{searchMessage(searched, results)}</h2>
           <div className='row'>
             {results.map((product, i) => (
-              <div className='col-md-4 mb-3'>
+              <div className='col-md-3 mb-3'>
                 <Card key={i} product={product} />
               </div>
             ))}

@@ -33,7 +33,7 @@ export const prices = [
 
 
 export const manufacturers = [
-  " - ",
+  " No Selection ",
   " ABBOTT",
 " ALEMBIC",
 " BAYER",

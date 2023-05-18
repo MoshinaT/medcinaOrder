@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { Badge } from 'reactstrap';
@@ -18,7 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
-import { addItem, updateItem, removeItem } from './cartHelpers';
+import { addItem, updateItem, removeItem, getCart } from './cartHelpers';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -65,6 +65,8 @@ const Card = ({
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
+  const [removeButtonDisplay,setRemoveButtonDisplay]= useState(showRemoveProductButton);
+  const [cartCountDisplay,setCartCountDisplay]= useState(cartUpdate);
 
   const showViewButton = (showViewProductButton) => {
     return (
@@ -78,9 +80,25 @@ const Card = ({
     );
   };
 
+  useEffect(() => {
+    getRequiredButton();
+  }, []);
+
+  const getRequiredButton = () => {
+    const cartVal = getCart();
+    const res = cartVal.filter(cart => cart._id === product._id);
+if(res.length>0){
+  // setRemoveButtonDisplay(true);
+  setCartCountDisplay(true);
+  setCount(res[0].count);
+}
+  }
+
   const addToCart = () => {
     // console.log('added');
-    addItem(product, setRedirect(true));
+    addItem(product);
+    getRequiredButton();
+
   };
 
   const shouldRedirect = (redirect) => {
@@ -115,9 +133,9 @@ const Card = ({
     }
   };
 
-  const showCartUpdateOptions = (cartUpdate) => {
+  const showCartUpdateOptions = (cartCountDisplay) => {
     return (
-      cartUpdate && (
+      cartCountDisplay && (
         <div className='mt-2'>
           <div className='input-group mb-3'>
             <div className='input-group-prepend'>
@@ -125,6 +143,7 @@ const Card = ({
             </div>
             <input
               type='text'
+              defaultValue={1}
               className='form-control'
               value={count}
               onChange={handleChange(product._id)}
@@ -135,9 +154,9 @@ const Card = ({
     );
   };
 
-  const showRemoveButton = (showRemoveProductButton) => {
+  const showRemoveButton = (removeButtonDisplay) => {
     return (
-      showRemoveProductButton && (
+      removeButtonDisplay && (
         <Button
           onClick={() => {
             removeItem(product._id);
@@ -205,9 +224,9 @@ console.log("pr",product);
               <span>
                 {/* {showViewButton(showViewProductButton)} */}
                 {showAddToCartBtn(showAddToCartButton)}
-                {showRemoveButton(showRemoveProductButton)}
+                {showRemoveButton(removeButtonDisplay)}
               </span>
-              {showCartUpdateOptions(cartUpdate)}
+              {showCartUpdateOptions(cartCountDisplay)}
             </CardContent>
           </CardM>
         </Grid>
